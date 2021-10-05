@@ -18,6 +18,7 @@ class PhoneNumberTableViewCell: UITableViewCell, UITextFieldDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         myTextField.delegate = self
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,13 +28,21 @@ class PhoneNumberTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        delegate?.phoneNumberTextField(info: myTextField.text ?? "")
-        
+//        delegate?.phoneNumberTextField(info: myTextField.text ?? "")
+
         return true
     }
-
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.phoneNumberTextField(info: myTextField.text ?? "",index: self.index)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 protocol CellPhoneNumberDelegate: AnyObject {
-    func phoneNumberTextField(info: String)
+    func phoneNumberTextField(info: String,index: Int)
+
 
 }
