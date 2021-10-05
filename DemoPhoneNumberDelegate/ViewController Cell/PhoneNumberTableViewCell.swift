@@ -18,6 +18,7 @@ class PhoneNumberTableViewCell: UITableViewCell, UITextFieldDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         myTextField.delegate = self
+        
 
     }
 
@@ -33,6 +34,9 @@ class PhoneNumberTableViewCell: UITableViewCell, UITextFieldDelegate {
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.phoneNumberTextField(info: myTextField.text ?? "",index: self.index)
+    }
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         delegate?.phoneNumberTextField(info: myTextField.text ?? "",index: self.index)
     }
     

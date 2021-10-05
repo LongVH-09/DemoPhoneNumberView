@@ -15,8 +15,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var nameArray = ["Lúa", "Khoai", "Sắn", "Mỳ"]
     
     var array = ["", "", "", ""]
-    var phoneNumber = ""
-    var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +37,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "PhoneNumberTableViewCell") as! PhoneNumberTableViewCell
         cell.myLabel.text = nameArray[indexPath.row]
         cell.index = indexPath.row
-        cell.myTextField.text = array[index]
         cell.delegate = self
 
         return cell
