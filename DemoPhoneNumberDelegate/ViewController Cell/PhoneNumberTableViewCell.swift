@@ -40,10 +40,6 @@ class PhoneNumberTableViewCell: UITableViewCell, UITextFieldDelegate {
         delegate?.phoneNumberTextField(info: myTextField.text ?? "",index: self.index)
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
 }
 protocol CellPhoneNumberDelegate: AnyObject {
     func phoneNumberTextField(info: String,index: Int)
